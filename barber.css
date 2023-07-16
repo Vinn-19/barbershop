@@ -10,11 +10,39 @@
   --toptext-gray-color: rgba(157, 164, 189, 0.6);
 }
 
+/* CSS Reset */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+}
+/* END of CSS Reset */
+
 body {
   font-family: "open sans", sans-serif;
 }
 /* General Styles */
 /* remove bullet points in lists */
+.container {
+  width: 1280;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: 0 auto;
+  /* border: 2px solid red; */
+}
+
 .list {
   list-style: none;
 }
@@ -30,6 +58,7 @@ body {
   line-height: normal;
   letter-spacing: 1.1px;
   text-transform: uppercase;
+  margin-bottom: 20px;
 }
 .bottom-text {
   font-size: 18px;
@@ -37,6 +66,7 @@ body {
   font-weight: 400;
   line-height: 30px;
   letter-spacing: 0.36px;
+  margin-bottom: 20px;
 }
 .section-title {
   font-size: 42px;
@@ -45,10 +75,19 @@ body {
   font-weight: 700;
   line-height: normal;
   letter-spacing: 2.1px;
+  margin-bottom: 20px;
+}
+
+.section {
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 /* 1. button - doesn't inherit automatically font-family */
 .button {
+  border: 1px solid var(--primary-orange-color);
+  border-radius: 25px;
+  padding: 5px 10px;
   text-align: center;
   font-size: 12px;
   font-family: inherit;
@@ -58,19 +97,43 @@ body {
   letter-spacing: 1.08px;
   text-transform: uppercase;
 }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 /* END OF GENERAL STYLES */
 /* Header Section */
 .header {
+  padding-top: 32px;
   background-color: var(--primary-background-color);
+}
+.header-container {
+  display: flex;
+  align-items: center;
 }
 
 .header-navigation {
+  display: flex;
+  align-items: center;
 }
 
 .header-logo {
+  margin-right: 130px;
 }
 
 .header-list {
+  display: flex;
+  gap: 30px;
 }
 
 .header-item {
@@ -90,6 +153,8 @@ body {
   color: var(--primary-orange-color);
 }
 .header-address {
+  margin-left: auto;
+  /* margin-right: auto; */
   color: var(--primary-white-color);
 }
 .header-address-link {
@@ -103,12 +168,22 @@ body {
   text-transform: uppercase;
 }
 .header-button {
+  margin-left: 40px;
   color: var(--primary-white-color);
   background-color: transparent;
 }
 /* HERO SECTION */
 .hero {
   background-color: var(--primary-background-color);
+}
+
+.hero-container {
+  display: flex;
+}
+
+.hero-wrap {
+  flex-grow: 1;
+  padding: 272px 100px 208px;
 }
 .hero-list {
 }
@@ -145,7 +220,19 @@ body {
 .about {
   background-color: var(--primary-white-color);
 }
+
+.about-container {
+  display: flex;
+  gap: 30px;
+}
+
+.about-wrap {
+  padding-right: 100px;
+}
+
 .about-list {
+  display: flex;
+  gap: 30px;
 }
 .about-item {
 }
@@ -173,6 +260,11 @@ body {
 .prices {
   background-color: var(--primary-background-color);
 }
+
+.prices-wrap {
+  display: flex;
+}
+
 .prices-top-text {
   color: var(--toptext-gray-color);
 }
@@ -180,10 +272,22 @@ body {
   color: var(--primary-white-color);
 }
 .prices-list {
-  color: var(--primary-gray-color);
+  color: var(--toptext-gray-color);
+  border: 1px solid var(--primary-white-color);
+  padding: 30px 20px;
+  width: calc((100% - 30px) / 2);
+  /* 100% = full width; 30px=spacing; /2 = means it will be half */
 }
 .prices-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
+
+.prices-item:last-child {
+  margin-bottom: 0;
+}
+
 .prices-item-text {
   color: inherit;
   font-size: 18px;
@@ -193,6 +297,8 @@ body {
   letter-spacing: 0.36px;
 }
 .prices-button {
+  margin: 0 auto;
+  display: block;
   color: var(--primary-white-color);
   background-color: transparent;
 }
@@ -200,10 +306,24 @@ body {
 .benefits {
   background-color: var(--primary-white-color);
 }
+
+.benefits-container {
+  display: flex;
+  padding-left: 85px;
+  gap: 130px;
+}
+
 .benefits-list {
+  display: flex;
+  width: 370px;
+  flex-wrap: wrap;
 }
 .benefits-item {
+  width: 170px;
+  height: 133px;
+  padding: 20px 24px;
 }
+
 .benefits-item-count {
   color: var(--primary-black-color);
   font-size: 42px;
@@ -240,10 +360,14 @@ body {
   color: var(--primary-black-color);
 }
 .barbers-list {
+  display: flex;
 }
 .barbers-item {
+  width: calc(100% - 60px / 3);
 }
 .barbers-item-title {
+  margin-top: 30px;
+  margin-bottom: 8px;
   color: var(--primary-black-color);
   text-align: center;
   font-size: 18px;
@@ -253,6 +377,7 @@ body {
   letter-spacing: 0.36px;
 }
 .barbers-item-text {
+  margin-bottom: 30px;
   color: var(--primary-orange-color);
   text-align: center;
   font-size: 14px;
@@ -270,8 +395,19 @@ body {
   color: var(--primary-black-color);
 }
 .portfolio-list {
+  display: flex;
 }
 .portfolio-item {
+  width: calc(100% - 90px / 4);
+}
+
+/* CONTACTS WRAP */
+.contacts-wrap {
+  margin: 0 auto;
+  background-color: rgba(2, 2, 55, 0.92);
+}
+.contacts-wrap-container {
+  display: flex;
 }
 
 /* BOOKING SECTION */
@@ -314,7 +450,15 @@ body {
 /* FOOTER */
 .footer {
   background-color: var(--secondary-background-color);
+  padding-top: 60px;
+  padding-bottom: 60px;
 }
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
 .footer-copryright {
   color: var(--primary-gray-color);
   font-size: 11px;
@@ -324,6 +468,8 @@ body {
   letter-spacing: 2.2px;
 }
 .footer-list {
+  display: flex;
+  gap: 30px;
 }
 .footer-item {
 }
